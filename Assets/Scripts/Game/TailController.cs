@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class TailController : MonoBehaviour 
+public class TailController : MonoBehaviour
 {
 	public float MoveSpeed;
 	public Vector3 tailTarget;
 	public GameObject tailTargetObject;
-	public SnakeController SnakeMain; 
+	public SnakeController SnakeMain;
 	public int ID;
-	
-	void Start () 
+
+	void Start ()
 	{
 		SnakeMain = GameObject.FindGameObjectWithTag("SnakeMain").GetComponent<SnakeController>();
 		MoveSpeed = SnakeMain.MoveSpeed + 0.5f;
@@ -19,19 +16,11 @@ public class TailController : MonoBehaviour
 		ID = SnakeMain.tailObj.IndexOf(gameObject);
 	}
 
-	void Update () 
+	void Update ()
 	{
 		tailTarget = tailTargetObject.transform.position;
 		tailTarget.z -= SnakeMain.z_offset;
 		transform.LookAt(tailTarget);
 		transform.position = Vector3.Lerp(transform.position, tailTarget, MoveSpeed * Time.deltaTime);
-	}
-
-	void OnTriggerEnter (Collider other) 
-	{
-		if(other.CompareTag("SnakeMain") && ID > 2) 
-		{
-			Application.LoadLevel(Application.loadedLevel);
-		}
 	}
 }

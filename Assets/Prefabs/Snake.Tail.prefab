@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4138605340754798}
   - component: {fileID: 33197681583734950}
   - component: {fileID: 23287329875861306}
-  - component: {fileID: 65561670293682246}
   - component: {fileID: 114160140609712534}
+  - component: {fileID: 65380641594221322}
   m_Layer: 0
   m_Name: Snake.Tail
-  m_TagString: Untagged
+  m_TagString: SnakeTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296989956474080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65561670293682246
+--- !u!65 &65380641594221322
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114160140609712534
 MonoBehaviour:
