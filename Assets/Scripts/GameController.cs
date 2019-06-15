@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private CanvasController m_canvasController;
 
+    [SerializeField]
+    private Camera m_camera;
+
     private void Awake()
     {
         SnakeController.OnTailDetected += GameOver;
@@ -14,6 +17,8 @@ public class GameController : MonoBehaviour
 
     private void GameOver()
     {
+        m_camera.enabled = true;
+
         SceneManager.UnloadSceneAsync("Game");
 
         m_canvasController.SignInCanvas.SetActive(true);
@@ -26,5 +31,7 @@ public class GameController : MonoBehaviour
         m_canvasController.GameScore = 0;
 
         SceneManager.LoadSceneAsync("Game", LoadSceneMode.Additive);
+
+        m_camera.enabled = false;
     }
 }

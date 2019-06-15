@@ -8,6 +8,8 @@ public class SnakeController : MonoBehaviour
 {
     public static event Action OnTailDetected = delegate { };
 
+    public static Color NextColor;
+
 	public float MoveSpeed;
 	public float RotateSpeed;
 
@@ -18,7 +20,12 @@ public class SnakeController : MonoBehaviour
 	public Color[] rgb = new Color[5];
 	public List<GameObject> tailObj = new List<GameObject>();
 
-	private void Start ()
+    private void Awake()
+    {
+        NextColor = rgb[3];
+    }
+
+    private void Start ()
 	{
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
 
@@ -61,7 +68,9 @@ public class SnakeController : MonoBehaviour
 		tailObj.Add(GameObject.Instantiate(TailPrefab, newPos, Quaternion.identity) as GameObject);
 
 		tailObj[tailObj.Count - 1].GetComponent<Renderer>().material.color = rgb[tailObj.Count % 5];
-	}
+
+        NextColor = rgb[(tailObj.Count + 1) % 5];
+    }
 
     private void OnTriggerEnter(Collider other)
     {
